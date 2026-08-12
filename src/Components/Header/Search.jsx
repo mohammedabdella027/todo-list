@@ -12,12 +12,12 @@ function Search() {
             <button className='absolute right-4 top-1.5 cursor-pointer'><img src={searchIcon} alt="Search" /></button>
         </div>
 
-        <button className='bg-[#6C63FF] hover:bg-[#6C63FF] w-22 h-9 rounded-[5px] flex gap-5 items-center px-3 cursor-pointer'>
+        <button className='bg-[#6C63FF] hover:bg-[#5850DD] w-22 h-9 rounded-[5px] flex gap-5 items-center px-3 cursor-pointer'>
             <p className='font-medium text-[18px]  text-white'>ALL</p>
             <p><img src={Down} alt="down" className='w-2 h-1' /></p>
         </button>
 
-        <button className='bg-[#6C63FF] hover:bg-[#6C63FF] w-9 h-9 rounded-[5px] cursor-pointer'>
+        <button className='bg-[#6C63FF] hover:bg-[#5850DD] w-9 h-9 rounded-[5px] cursor-pointer'>
             <img src={Moon} alt="moon" className='m-auto' />
         </button>
 
