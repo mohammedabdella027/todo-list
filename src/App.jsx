@@ -3,6 +3,7 @@ import './App.css'
 import Header from './Components/Header/Header'
 import TodoList from './Components/Main/TodoList'
 import Search from './Components/Header/Search'
+import NewTodo from './Components/Main/NewTodo'
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -16,6 +17,8 @@ function App() {
     )
   }, [darkMode])
 
+  const [newTodo, setNewTodo] = useState(false)
+
   return (
     <div className={darkMode ? 'bg-[#252525] text-white min-h-screen' : 'bg-white min-h-screen'}>
     <Header darkMode={darkMode} />
@@ -25,7 +28,13 @@ function App() {
     darkMode={darkMode}
     />
     
-    <TodoList darkMode={darkMode} />
+    <TodoList 
+    darkMode={darkMode}
+    newTodo={newTodo}
+    setNewTodo={setNewTodo} 
+    />
+
+    {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} />}
     </div>
   )
 }
