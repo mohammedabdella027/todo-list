@@ -19,6 +19,8 @@ function App() {
 
   const [newTodo, setNewTodo] = useState(false)
 
+  const [todos, setTodos] = useState([])
+
   return (
     <div className={darkMode ? 'bg-[#252525] text-white min-h-screen' : 'bg-white min-h-screen'}>
     <Header darkMode={darkMode} />
@@ -31,10 +33,11 @@ function App() {
     <TodoList 
     darkMode={darkMode}
     newTodo={newTodo}
-    setNewTodo={setNewTodo} 
+    setNewTodo={setNewTodo}
+    todos={todos}
     />
 
-    {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} />}
+    {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} todos={todos} setTodos={setTodos} />}
     </div>
   )
 }
