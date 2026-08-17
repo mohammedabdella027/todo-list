@@ -1,7 +1,11 @@
 import React from 'react'
-
 import DetectiveCheckFootPrint from '../../assets/images/detective-check-footprint.png'
 import Plus from '../../assets/icons/plus.png'
+import Check from '../../assets/icons/check.png'
+import Delete from '../../assets/icons/delete.png'
+import RecPurple from '../../assets/icons/rectangle-purple.png'
+import Rec from '../../assets/icons/rectangle.png'
+import Update from '../../assets/icons/update.png'
 
 function TodoList({ darkMode, newTodo, setNewTodo, todos}) {
     return (
@@ -19,7 +23,19 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos}) {
 
             {
                 todos.map((todo, index) => (
-                    <p key={index}>{todo}</p>
+                    <div className='md:w-130 mt-5 w-75 mx-auto'>
+                        <div className='flex items-center relative'>
+                            <button> <img src={Rec} alt="rectangle" className='cursor-pointer' /></button>
+                            <p key={index}
+                            className='font-kanit font-medium text-[20px] uppercase items-center pl-3'
+                            >{todo}</p>
+
+                            <button className='absolute right-8 cursor-pointer'><img src={Update} alt="update" className='text-red-600' /></button>
+                            <button className='absolute right-1 cursor-pointer'><img src={Delete} alt="delete" /></button>
+                        </div>
+
+                        <hr className='border opacity-50 text-[#6C63FF] my-2'/>
+                    </div>
                 ))
             }
 

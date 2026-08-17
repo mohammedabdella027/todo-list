@@ -9,14 +9,17 @@ function NewTodo({darkMode, setNewTodo, todos, setTodos}) {
     }
 
     const handleApply = () => {
-        setTodos([
-            ...todos,
-            todo
-        ])
-
-        setNewTodo(false)
-
-        setTodo("")
+        if(!todo.trim()) {
+            return
+        }  
+            setTodos([
+                ...todos,
+                todo.trim()
+            ])
+    
+            setNewTodo(false)
+    
+            setTodo("")
     }
 
     return (

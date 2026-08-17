@@ -19,7 +19,18 @@ function App() {
 
   const [newTodo, setNewTodo] = useState(false)
 
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+    const saveTodos = localStorage.getItem('todos')
+
+    return saveTodos ? JSON.parse(saveTodos) : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem(
+      'todos',
+      JSON.stringify(todos)
+    )
+  }, [todos])
 
   return (
     <div className={darkMode ? 'bg-[#252525] text-white min-h-screen' : 'bg-white min-h-screen'}>
