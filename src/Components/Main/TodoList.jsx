@@ -37,12 +37,15 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos}) {
                         <div className='flex items-center relative'>
                             <button> <img src={Rec} alt="rectangle" className='cursor-pointer' /></button>
                             <p className='font-kanit font-medium text-[20px] uppercase items-center pl-3'
-                            >{todo}</p>
+                            >{todo.length > 15
+                            ? todo.slice(0, 15) + "..."
+                            : todo
+                            }</p>
 
-                            <button className='absolute right-8 cursor-pointer'><img src={Update} alt="update" className='text-red-600' /></button>
+                            <button className='absolute right-8 cursor-pointer hover:scale-120 transition ease-in-out duration-300'><img src={Update} alt="update" className='text-red-600' /></button>
                             <button 
                             onClick={() => handleDelete(index)}
-                            className='absolute right-1 cursor-pointer'><img src={Delete} alt="delete" /></button>
+                            className='absolute right-1 cursor-pointer hover:scale-120 transition duration-300 ease-in-out'><img src={Delete} alt="delete" /></button>
                         </div>
 
                         <hr className='border opacity-50 text-[#6C63FF] my-2'/>
