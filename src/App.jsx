@@ -46,6 +46,7 @@ function App() {
     newTodo={newTodo}
     setNewTodo={setNewTodo}
     todos={todos}
+    setTodos={setTodos}
     />
 
     {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} todos={todos} setTodos={setTodos} />}

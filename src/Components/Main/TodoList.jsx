@@ -7,7 +7,16 @@ import RecPurple from '../../assets/icons/rectangle-purple.png'
 import Rec from '../../assets/icons/rectangle.png'
 import Update from '../../assets/icons/update.png'
 
-function TodoList({ darkMode, newTodo, setNewTodo, todos}) {
+function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos}) {
+
+    const handleDelete = (deleteIndex) => {
+        setTodos(
+            todos.filter((todo, index) => {
+                return index !== deleteIndex
+            })
+        )
+    }
+
     return (
         <section className='relative mx-auto w-full md:w-187 h-113'>
 
@@ -23,15 +32,17 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos}) {
 
             {
                 todos.map((todo, index) => (
-                    <div className='md:w-130 mt-5 w-75 mx-auto'>
+                    <div key={index} 
+                    className='md:w-130 mt-5 w-75 mx-auto'>
                         <div className='flex items-center relative'>
                             <button> <img src={Rec} alt="rectangle" className='cursor-pointer' /></button>
-                            <p key={index}
-                            className='font-kanit font-medium text-[20px] uppercase items-center pl-3'
+                            <p className='font-kanit font-medium text-[20px] uppercase items-center pl-3'
                             >{todo}</p>
 
                             <button className='absolute right-8 cursor-pointer'><img src={Update} alt="update" className='text-red-600' /></button>
-                            <button className='absolute right-1 cursor-pointer'><img src={Delete} alt="delete" /></button>
+                            <button 
+                            onClick={() => handleDelete(index)}
+                            className='absolute right-1 cursor-pointer'><img src={Delete} alt="delete" /></button>
                         </div>
 
                         <hr className='border opacity-50 text-[#6C63FF] my-2'/>
