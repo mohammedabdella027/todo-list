@@ -2,6 +2,7 @@ import React from 'react'
 import DropdownMenu from './DropdownSelection'
 import searchIcon from '../../assets/icons/search.svg'
 import Moon from '../../assets/icons/moon.svg'
+import Sun from '../../assets/icons/sun.svg'
 
 function Search({darkMode, setDarkMode, search, setSearch}) {
     return (
@@ -20,7 +21,7 @@ function Search({darkMode, setDarkMode, search, setSearch}) {
         <DropdownMenu />
 
         <button onClick={() => setDarkMode(!darkMode)} className='bg-[#6C63FF] hover:bg-[#5850DD] w-9 h-9 rounded-[5px] cursor-pointer'>
-            <img src={Moon} alt="moon" className='m-auto' />
+            <img src={darkMode ? `${Sun}` : `${Moon}`} alt="mode" className='m-auto' />
         </button>
 
         </div>
