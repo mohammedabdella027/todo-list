@@ -6,8 +6,9 @@ import Delete from '../../assets/icons/delete.png'
 import RecPurple from '../../assets/icons/rectangle-purple.png'
 import Rec from '../../assets/icons/rectangle.png'
 import Update from '../../assets/icons/update.png'
+import Search from '../Header/Search'
 
-function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos}) {
+function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
 
     const handleDelete = (deleteIndex) => {
         setTodos(
@@ -31,7 +32,9 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos}) {
             }
 
             {
-                todos.map((todo, index) => (
+                todos.filter((todo) => {
+                    return todo.toLowerCase().includes(search.toLowerCase())
+                }).map((todo, index) => (
                     <div key={index} 
                     className='md:w-130 mt-5 w-75 mx-auto'>
                         <div className='flex items-center relative'>
@@ -54,7 +57,7 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos}) {
             }
 
             <button onClick={() => setNewTodo(!newTodo)} 
-            className='bg-[#6C63FF] hover:bg-[#5850DD] cursor-pointer rounded-full text-white w-12.5 h-12.5 absolute right-4 bottom-4'><img src={Plus} alt="plus" className='m-auto' /></button>
+            className='bg-[#6C63FF] hover:bg-[#5850DD] cursor-pointer rounded-full text-white w-12.5 h-12.5 fixed right-4 lg:right-40 md:right-10 sm:right-10 bottom-4'><img src={Plus} alt="plus" className='m-auto' /></button>
         </section>
     )
 }

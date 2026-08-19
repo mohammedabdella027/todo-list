@@ -6,6 +6,8 @@ import Search from './Components/Header/Search'
 import NewTodo from './Components/Main/NewTodo'
 
 function App() {
+
+  // --- Dark mode and Light mode 
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('theme') === 'dark'
   })
@@ -17,8 +19,10 @@ function App() {
     )
   }, [darkMode])
 
+  // --- New todo 
   const [newTodo, setNewTodo] = useState(false)
 
+  // --- todos 
   const [todos, setTodos] = useState(() => {
     const saveTodos = localStorage.getItem('todos')
 
@@ -32,6 +36,10 @@ function App() {
     )
   }, [todos])
 
+  // --- searching 
+  const [search, setSearch] = useState("")
+
+  // ----------------------------------------
   return (
     <div className={darkMode ? 'bg-[#252525] text-white min-h-screen' : 'bg-white min-h-screen'}>
     <Header darkMode={darkMode} />
@@ -39,6 +47,8 @@ function App() {
     <Search 
     setDarkMode={setDarkMode} 
     darkMode={darkMode}
+    search={search}
+    setSearch={setSearch}
     />
     
     <TodoList 
@@ -47,6 +57,7 @@ function App() {
     setNewTodo={setNewTodo}
     todos={todos}
     setTodos={setTodos}
+    search={search}
     />
 
     {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} todos={todos} setTodos={setTodos} />}
