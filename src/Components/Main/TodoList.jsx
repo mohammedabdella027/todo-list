@@ -19,7 +19,7 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
     }
 
     return (
-        <section className='relative mx-auto w-full md:w-187 h-113'>
+        <section className='relative mx-auto w-full md:w-187'>
 
             {
                 todos.length === 0 && (
@@ -37,7 +37,7 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
                 }).map((todo, index) => (
                     <div key={index} 
                     className='md:w-130 mt-5 w-75 mx-auto'>
-                        <div className='flex items-center relative'>
+                        <div className='flex items-center relative py-2'>
                             <button> <img src={Rec} alt="rectangle" className='cursor-pointer' /></button>
                             <p className='font-kanit font-medium text-[20px] uppercase items-center pl-3'
                             >{todo.length > 15
@@ -51,7 +51,7 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
                             className='absolute right-1 cursor-pointer hover:scale-120 transition duration-300 ease-in-out'><img src={Delete} alt="delete" /></button>
                         </div>
 
-                        <hr className='border opacity-50 text-[#6C63FF] my-2'/>
+                        <hr className='border opacity-50 text-[#6C63FF]'/>
                     </div>
                 ))
             }
