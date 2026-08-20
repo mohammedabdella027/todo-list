@@ -1,9 +1,8 @@
 import React from 'react'
 import DetectiveCheckFootPrint from '../../assets/images/detective-check-footprint.png'
 import Plus from '../../assets/icons/plus.png'
-import Check from '../../assets/icons/check.png'
 import Delete from '../../assets/icons/delete.png'
-import RecPurple from '../../assets/icons/rectangle-purple.png'
+import Check from '../../assets/icons/check.png'
 import Rec from '../../assets/icons/rectangle.png'
 import Update from '../../assets/icons/update.png'
 import Search from '../Header/Search'
@@ -14,6 +13,16 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
         setTodos(
             todos.filter((todo) => {
                 return todo !== deleteTodo
+            })
+        )
+    }
+
+    const handleComplete = (todoIndex) => {
+        setTodos(
+            todos.map((todo, index) => {
+                return index === todoIndex
+                ? {...todo, completed: !todo.completed}
+                : todo
             })
         )
     }
@@ -38,8 +47,15 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
                     <div key={index} 
                     className='md:w-130 mt-5 w-75 mx-auto'>
                         <div className='flex items-center relative py-2'>
-                            <button> <img src={Rec} alt="rectangle" className='cursor-pointer' /></button>
-                            <p className='font-kanit font-medium text-[20px] uppercase items-center pl-3'
+                            <button onClick={() => handleComplete(index)}> 
+                                <img
+                                src={todo.completed ? Check : Rec} alt="complete" className='cursor-pointer' 
+                                /></button>
+
+                            <p className={
+                                `font-kanit font-medium text-[20px] uppercase items-center pl-3 ${
+                                    todo.completed ? 'line-through opacity-50' : ''
+                                }`}
                             >{todo.text.length > 15
                             ? todo.text.slice(0, 15) + "..."
                             : todo.text
