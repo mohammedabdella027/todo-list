@@ -10,10 +10,10 @@ import Search from '../Header/Search'
 
 function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
 
-    const handleDelete = (deleteIndex) => {
+    const handleDelete = (deleteTodo) => {
         setTodos(
-            todos.filter((todo, index) => {
-                return index !== deleteIndex
+            todos.filter((todo) => {
+                return todo !== deleteTodo
             })
         )
     }
@@ -33,21 +33,21 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
 
             {
                 todos.filter((todo) => {
-                    return todo.toLowerCase().includes(search.toLowerCase())
+                    return todo.text.toLowerCase().includes(search.toLowerCase())
                 }).map((todo, index) => (
                     <div key={index} 
                     className='md:w-130 mt-5 w-75 mx-auto'>
                         <div className='flex items-center relative py-2'>
                             <button> <img src={Rec} alt="rectangle" className='cursor-pointer' /></button>
                             <p className='font-kanit font-medium text-[20px] uppercase items-center pl-3'
-                            >{todo.length > 15
-                            ? todo.slice(0, 15) + "..."
-                            : todo
+                            >{todo.text.length > 15
+                            ? todo.text.slice(0, 15) + "..."
+                            : todo.text
                             }</p>
 
                             <button className='absolute right-8 cursor-pointer hover:scale-120 transition ease-in-out duration-300'><img src={Update} alt="update" className='text-red-600' /></button>
                             <button 
-                            onClick={() => handleDelete(index)}
+                            onClick={() => handleDelete(todo)}
                             className='absolute right-1 cursor-pointer hover:scale-120 transition duration-300 ease-in-out'><img src={Delete} alt="delete" /></button>
                         </div>
 

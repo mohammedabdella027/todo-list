@@ -14,11 +14,13 @@ function NewTodo({darkMode, setNewTodo, todos, setTodos}) {
         }  
             setTodos([
                 ...todos,
-                todo.trim()
+                {
+                    text: todo.trim(),
+                    completed: false
+                }
             ])
     
             setNewTodo(false)
-    
             setTodo("")
     }
 
