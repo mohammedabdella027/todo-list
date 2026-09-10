@@ -1,17 +1,27 @@
 import { useState } from "react"
 
-function NewTodo({darkMode, setNewTodo, todos, setTodos}) {
+function NewTodo({darkMode, setNewTodo, todos, setTodos, editTodo, setEditTodo}) {
 
-    const [todo, setTodo] = useState("")
+    const [todo, setTodo] = useState(editTodo ? editTodo.text : "")
 
     const handleChange = (e) => {
         setTodo(e.target.value)
     }
 
     const handleApply = () => {
-        if(!todo.trim()) {
+        if (!todo.trim()) {
             return
-        }  
+        }
+
+        if (editTodo) {
+            setTodos(
+                todos.map((t) => {
+                    return t === editTodo
+                        ? { ...t, text: todo.trim() }
+                        : t
+                })
+            )
+        } else {
             setTodos([
                 ...todos,
                 {
@@ -19,16 +29,18 @@ function NewTodo({darkMode, setNewTodo, todos, setTodos}) {
                     completed: false
                 }
             ])
-    
-            setNewTodo(false)
-            setTodo("")
+        }
+
+        setNewTodo(false)
+        setEditTodo(null)
+        setTodo("")
     }
 
     return (
         <div className='fixed inset-0 bg-black/50 flex items-center justify-center'>
 
         <div className={`${darkMode ? 'bg-[#252525]' : 'bg-white'} w-90 sm:w-130 h-72 border rounded-2xl relative m-auto`}>
-            <h1 className='text-center font-kanit font-medium text-2xl pt-2 uppercase'>New Note</h1>
+            <h1 className='text-center font-kanit font-medium text-2xl pt-2 uppercase'>{editTodo ? 'Edit Note' : 'New Note'}</h1>
 
             <input type="text" placeholder='Input your note...' className='block font-medium text-[16px] placeholder:text-[#C3C1E5] w-80 sm:w-125 h-9.5 mt-2 mx-auto outline-none border rounded-[5px] border-[#6C63FF] pl-3'
             
@@ -43,7 +55,7 @@ function NewTodo({darkMode, setNewTodo, todos, setTodos}) {
 
             <button 
             onClick={handleApply}
-            className='font-medium font-kanit text-[18px] text-center w-24.5 h-9.5 border rounded-[5px] absolute bottom-2.5 right-5.5 bg-[#6C63FF] hover:bg-[#5850DD] text-white'>Apply</button>
+            className='font-medium font-kanit text-[18px] text-center w-24.5 h-9.5 border rounded-[5px] absolute bottom-2.5 right-5.5 bg-[#6C63FF] hover:bg-[#5850DD] text-white'>{editTodo ? 'Update' : 'Apply'}</button>
 
         </div>
 

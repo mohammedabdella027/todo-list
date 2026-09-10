@@ -7,7 +7,7 @@ import Rec from '../../assets/icons/rectangle.png'
 import Update from '../../assets/icons/update.png'
 import Search from '../Header/Search'
 
-function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
+function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search, setEditTodo}) {
 
     const handleDelete = (deleteTodo) => {
         setTodos(
@@ -25,6 +25,11 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
                 : todo
             })
         )
+    }
+
+    const handleEdit = (todo) => {
+        setEditTodo(todo)
+        setNewTodo(true)
     }
 
     return (
@@ -61,7 +66,8 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search}) {
                             : todo.text
                             }</p>
 
-                            <button className='absolute right-8 cursor-pointer hover:scale-120 transition ease-in-out duration-300'><img src={Update} alt="update" className='text-red-600' /></button>
+                            <button onClick={() => handleEdit(todo)}
+                            className='absolute right-8 cursor-pointer hover:scale-120 transition ease-in-out duration-300'><img src={Update} alt="update" className='text-red-600' /></button>
                             <button 
                             onClick={() => handleDelete(todo)}
                             className='absolute right-1 cursor-pointer hover:scale-120 transition duration-300 ease-in-out'><img src={Delete} alt="delete" /></button>

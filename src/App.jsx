@@ -22,6 +22,9 @@ function App() {
   // --- New todo 
   const [newTodo, setNewTodo] = useState(false)
 
+  // --- Edit todo
+  const [editTodo, setEditTodo] = useState(null)
+
   // --- todos 
   const [todos, setTodos] = useState(() => {
     const saveTodos = localStorage.getItem('todos')
@@ -58,9 +61,11 @@ function App() {
     todos={todos}
     setTodos={setTodos}
     search={search}
+    setEditTodo={setEditTodo}
     />
 
-    {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} todos={todos} setTodos={setTodos} />}
+    {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} todos={todos} setTodos={setTodos} editTodo={editTodo}
+    setEditTodo={setEditTodo} />}
     </div>
   )
 }
