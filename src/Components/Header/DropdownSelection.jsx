@@ -24,14 +24,14 @@ function DropdownSelection({ filter, setFilter }) {
                 <div className='absolute left-0 mt-0 w-23 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-10'>
                     <ul className="py-1">
                         {options.map((option, index) => (
-                        <li key={index}>
-                            <button
-                                onClick={() => handleSelect(option)}
-                                className="w-full text-left px-1 py-2 text-[16px] font-kanit font-normal text-[#6C63FF] hover:bg-[#6C63FF33] transition-colors cursor-pointer"
-                            >
-                                {option}
-                            </button>
-                        </li>
+                            <li key={index}>
+                                <button
+                                    onClick={() => handleSelect(option)}
+                                    className="w-full text-left px-1 py-2 text-[16px] font-kanit font-normal text-[#6C63FF] hover:bg-[#6C63FF33] transition-colors cursor-pointer"
+                                >
+                                    {option}
+                                </button>
+                            </li>
                         ))}
                     </ul>
                 </div>

@@ -1,4 +1,4 @@
-import { useEffect ,useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './Components/Header/Header'
 import TodoList from './Components/Main/TodoList'
@@ -48,30 +48,30 @@ function App() {
   // ----------------------------------------
   return (
     <div className={darkMode ? 'bg-[#252525] text-white min-h-screen' : 'bg-white min-h-screen'}>
-    <Header darkMode={darkMode} />
-    
-    <Search 
-    setDarkMode={setDarkMode} 
-    darkMode={darkMode}
-    search={search}
-    setSearch={setSearch}
-    filter={filter}
-    setFilter={setFilter}
-    />
-    
-    <TodoList 
-    darkMode={darkMode}
-    newTodo={newTodo}
-    setNewTodo={setNewTodo}
-    todos={todos}
-    setTodos={setTodos}
-    search={search}
-    setEditTodo={setEditTodo}
-    filter={filter}
-    />
+      <Header darkMode={darkMode} />
 
-    {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} todos={todos} setTodos={setTodos} editTodo={editTodo}
-    setEditTodo={setEditTodo} />}
+      <Search
+        setDarkMode={setDarkMode}
+        darkMode={darkMode}
+        search={search}
+        setSearch={setSearch}
+        filter={filter}
+        setFilter={setFilter}
+      />
+
+      <TodoList
+        darkMode={darkMode}
+        newTodo={newTodo}
+        setNewTodo={setNewTodo}
+        todos={todos}
+        setTodos={setTodos}
+        search={search}
+        setEditTodo={setEditTodo}
+        filter={filter}
+      />
+
+      {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} todos={todos} setTodos={setTodos} editTodo={editTodo}
+        setEditTodo={setEditTodo} />}
     </div>
   )
 }
