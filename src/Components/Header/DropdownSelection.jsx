@@ -1,23 +1,22 @@
 import { useState } from 'react'
 import Down from '../../assets/icons/down.png'
 
-function DropdownSelection() {
+function DropdownSelection({ filter, setFilter }) {
     const [isOpen, setIsOpen] = useState(false);
 
-    const [selectedOption, setSelectedOption] = useState("ALL");
 
     const options = ["ALL", "Complete", "Incomplete"];
 
 
     const handleSelect = (option) => {
-        setSelectedOption(option);
+        setFilter(option);
         setIsOpen(false);
     };
 
     return (
         <div className='relative'>
             <button onClick={() => setIsOpen(!isOpen)} className='bg-[#6C63FF] hover:bg-[#5850DD] w-27 h-9 rounded-[5px] relative flex items-center px-1 cursor-pointer'>
-                <p className='font-medium text-[16px] text-white'>{selectedOption}</p>
+                <p className='font-medium text-[16px] text-white'>{filter}</p>
                 <p><img src={Down} alt="down" className={`w-2 h-1 m absolute right-2.5 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} /></p>
             </button>
 

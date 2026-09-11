@@ -4,7 +4,7 @@ import searchIcon from '../../assets/icons/search.svg'
 import Moon from '../../assets/icons/moon.svg'
 import Sun from '../../assets/icons/sun.svg'
 
-function Search({darkMode, setDarkMode, search, setSearch}) {
+function Search({darkMode, setDarkMode, search, setSearch, filter, setFilter}) {
     return (
         <div className='flex justify-center gap-4'>
         <div className='relative w-55 md:w-149 h-9 border border-[#6C63FF] rounded-[5px]'>
@@ -18,7 +18,10 @@ function Search({darkMode, setDarkMode, search, setSearch}) {
             <button className='absolute right-4 top-1.5 cursor-pointer'><img src={searchIcon} alt="Search" /></button>
         </div>
 
-        <DropdownMenu />
+        <DropdownMenu 
+        filter={filter}
+        setFilter={setFilter}
+        />
 
         <button onClick={() => setDarkMode(!darkMode)} className='bg-[#6C63FF] hover:bg-[#5850DD] w-9 h-9 rounded-[5px] cursor-pointer'>
             <img src={darkMode ? `${Sun}` : `${Moon}`} alt="mode" className='m-auto' />

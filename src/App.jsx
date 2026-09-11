@@ -42,6 +42,9 @@ function App() {
   // --- searching 
   const [search, setSearch] = useState("")
 
+  // --- filtering
+  const [filter, setFilter] = useState("ALL")
+
   // ----------------------------------------
   return (
     <div className={darkMode ? 'bg-[#252525] text-white min-h-screen' : 'bg-white min-h-screen'}>
@@ -52,6 +55,8 @@ function App() {
     darkMode={darkMode}
     search={search}
     setSearch={setSearch}
+    filter={filter}
+    setFilter={setFilter}
     />
     
     <TodoList 
@@ -62,6 +67,7 @@ function App() {
     setTodos={setTodos}
     search={search}
     setEditTodo={setEditTodo}
+    filter={filter}
     />
 
     {newTodo && <NewTodo darkMode={darkMode} setNewTodo={setNewTodo} todos={todos} setTodos={setTodos} editTodo={editTodo}

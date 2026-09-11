@@ -7,7 +7,7 @@ import Rec from '../../assets/icons/rectangle.png'
 import Update from '../../assets/icons/update.png'
 import Search from '../Header/Search'
 
-function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search, setEditTodo}) {
+function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search, setEditTodo, filter}) {
 
     const handleDelete = (deleteTodo) => {
         setTodos(
@@ -47,8 +47,22 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search, setE
 
             {
                 todos.filter((todo) => {
-                    return todo.text.toLowerCase().includes(search.toLowerCase())
-                }).map((todo, index) => (
+                return todo.text.toLowerCase().includes(search.toLowerCase())
+                })
+                .filter((todo) => {
+                    if (filter === "ALL") {
+                        return true
+                    }
+
+                    if (filter === "Complete") {
+                        return todo.completed
+                    }
+
+                    if (filter === "Incomplete") {
+                        return !todo.completed
+                    }
+                })
+                .map((todo, index) => (
                     <div key={index} 
                     className='md:w-130 mt-5 w-75 mx-auto'>
                         <div className='flex items-center relative py-2'>
