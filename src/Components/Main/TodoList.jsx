@@ -32,6 +32,23 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search, setE
         setNewTodo(true)
     }
 
+    const filteredTodos = todos
+    .filter((todo) => {
+        return todo.text.toLowerCase().includes(search.toLowerCase())
+    })
+    
+    .filter((todo) => {
+        if (filter === "ALL") {
+            return true
+        }
+        if (filter === "Complete") {
+            return todo.completed
+        }
+        if (filter === "Incomplete") {
+            return !todo.completed
+        }
+    })
+
     return (
         <section className='relative mx-auto w-full md:w-187'>
 
@@ -46,23 +63,13 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search, setE
             }
 
             {
-                todos.filter((todo) => {
-                    return todo.text.toLowerCase().includes(search.toLowerCase())
-                })
-                    .filter((todo) => {
-                        if (filter === "ALL") {
-                            return true
-                        }
+                filteredTodos.length === 0 && todos.length !== 0 && (
+                    <p className='text-center pt-8 font-kanit font-normal text-[20px]'>No todos found...</p>
+                )
+            }
 
-                        if (filter === "Complete") {
-                            return todo.completed
-                        }
-
-                        if (filter === "Incomplete") {
-                            return !todo.completed
-                        }
-                    })
-                    .map((todo, index) => (
+            {
+                filteredTodos.map((todo, index) => (
                         <div key={index}
                             className='md:w-130 mt-5 w-75 mx-auto'>
                             <div className='flex items-center relative py-2'>
