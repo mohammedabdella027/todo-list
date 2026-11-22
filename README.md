@@ -1,16 +1,90 @@
-# React + Vite
+# Todo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive todo-list application built with React, Vite, and Tailwind CSS. Create, search, filter, complete, edit, and delete tasks, with preferences and tasks automatically saved in the browser.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add and edit todo items
+- Mark todos as complete or incomplete
+- Delete individual todos
+- Search todos by text
+- Filter todos by all, complete, or incomplete
+- Switch between light and dark themes
+- Responsive layout for desktop and mobile
+- Automatic local storage persistence
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite 8
+- Tailwind CSS 4
+- JavaScript
+- ESLint
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js 18 or newer
+- npm
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd todo-list
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open the local URL shown in the terminal.
+
+## Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Create a production build in `dist` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+## Data Storage
+
+The app uses the browser's `localStorage`:
+
+- `todos` stores the task list and completion status
+- `theme` stores the selected light or dark theme
+
+Clearing the site's browser data will reset the todos and theme.
+
+## Project Structure
+
+```text
+todo-list/
+├── src/
+│   ├── Components/
+│   │   ├── Header/
+│   │   │   ├── Header.jsx
+│   │   │   ├── Search.jsx
+│   │   │   └── DropdownSelection.jsx
+│   │   └── Main/
+│   │       ├── NewTodo.jsx
+│   │       └── TodoList.jsx
+│   ├── assets/
+│   ├── App.jsx
+│   └── App.css
+├── package.json
+└── vite.config.js
+```
