@@ -99,7 +99,7 @@ function TodoList({ darkMode, newTodo, setNewTodo, todos, setTodos, search, setE
             }
 
             <button onClick={() => setNewTodo(!newTodo)}
-                className='bg-[#6C63FF] hover:bg-[#5850DD] cursor-pointer rounded-full text-white w-12.5 h-12.5 fixed right-4 lg:right-40 md:right-10 sm:right-10 bottom-4'><img src={Plus} alt="plus" className='m-auto' /></button>
+                className='bg-[#6C63FF] hover:bg-[#5850DD] cursor-pointer rounded-full text-black w-12.5 h-12.5 fixed right-4 lg:right-40 md:right-10 sm:right-10 bottom-4'><img src={Plus} alt="plus" className='m-auto' /></button>
         </section>
     )
 }
